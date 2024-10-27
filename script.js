@@ -25,22 +25,24 @@ function getWeather() {
 }
 
 function displayWeather(data) {
-  const weatherResult = document.getElementById("weather-result");
-
-  const cityName = data.name;
-  const temperature = data.main.temp;
-  const weather = data.weather[0].description;
-  const humidity = data.main.humidity;
-  const windSpeed = data.wind.speed;
-
-  weatherResult.innerHTML = `
-    <div class="weather-item"><strong>Kota:</strong> ${cityName}</div>
-    <div class="weather-item"><strong>Suhu:</strong> ${temperature}°C</div>
-    <div class="weather-item"><strong>Cuaca:</strong> ${weather}</div>
-    <div class="weather-item"><strong>Kelembapan:</strong> ${humidity}%</div>
-    <div class="weather-item"><strong>Kecepatan Angin:</strong> ${windSpeed} m/s</div>
-  `;
-}
+    const weatherResult = document.getElementById("weather-result");
+  
+    const cityName = data.name;
+    const temperature = data.main.temp;
+    const weather = data.weather[0].description;
+    const humidity = data.main.humidity;
+    const windSpeed = data.wind.speed;
+  
+    // Tampilkan hasil cuaca dengan HTML dan tambahkan kelas dark-mode jika diperlukan
+    weatherResult.innerHTML = `
+      <div class="weather-item ${body.classList.contains("dark-mode") ? "dark-mode" : ""}"><strong>Kota:</strong> ${cityName}</div>
+      <div class="weather-item ${body.classList.contains("dark-mode") ? "dark-mode" : ""}"><strong>Suhu:</strong> ${temperature}°C</div>
+      <div class="weather-item ${body.classList.contains("dark-mode") ? "dark-mode" : ""}"><strong>Cuaca:</strong> ${weather}</div>
+      <div class="weather-item ${body.classList.contains("dark-mode") ? "dark-mode" : ""}"><strong>Kelembapan:</strong> ${humidity}%</div>
+      <div class="weather-item ${body.classList.contains("dark-mode") ? "dark-mode" : ""}"><strong>Kecepatan Angin:</strong> ${windSpeed} m/s</div>
+    `;
+  }
+  
 // Ambil tombol dan elemen body
 const toggleButton = document.getElementById("toggle-mode");
 const body = document.body;
