@@ -157,4 +157,82 @@ body {
   body.dark-mode-animate {
     animation: slideDown 1s forwards;
   }
+  /* Tombol mode malam dan siang */
+.mode-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s, background-color 0.3s;
+    z-index: 10;
+  }
+  
+  .mode-button:hover {
+    transform: scale(1.05);
+    background-color: #004d40;
+  }
+  
+  /* Animasi transisi antara mode terang dan gelap */
+  @keyframes slideToDark {
+    from {
+      background-color: #ffffff;
+    }
+    to {
+      background-color: #121212;
+    }
+  }
+  
+  @keyframes slideToLight {
+    from {
+      background-color: #121212;
+    }
+    to {
+      background-color: #ffffff;
+    }
+  }
+  
+  body.dark-mode-animate {
+    animation: slideToDark 1s forwards;
+  }
+  
+  body.light-mode-animate {
+    animation: slideToLight 1s forwards;
+  }
+  
+/* Mode malam */
+body.dark-mode {
+    background-color: #121212; /* Warna latar belakang utama */
+    color: #f5f5f5; /* Warna teks umum di mode malam */
+    transition: background-color 1s ease-in-out, color 1s ease-in-out;
+  }
+  
+  #app.dark-mode {
+    background-color: #333; /* Warna latar belakang app di mode malam */
+    color: #f5f5f5; /* Warna teks app di mode malam */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: background-color 1s ease-in-out, color 1s ease-in-out;
+  }
+  
+  /* Gaya untuk input dan tombol di mode malam */
+  #city-input.dark-mode {
+    background-color: #444;
+    color: #f5f5f5;
+    border: 2px solid #80cbc4;
+  }
+  
+  #search-btn.dark-mode {
+    background-color: #00796b;
+    color: white;
+  }
+  
+/* Gaya teks di dalam weather-item untuk mode malam */
+.weather-item.dark-mode strong {
+    color: #ffffff; /* Warna teks putih */
+  }
   

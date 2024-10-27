@@ -45,23 +45,43 @@ function displayWeather(data) {
 const toggleButton = document.getElementById("toggle-mode");
 const body = document.body;
 const app = document.getElementById("app");
+const cityInput = document.getElementById("city-input");
+const searchBtn = document.getElementById("search-btn");
 
-// Event listener untuk tombol mode malam
 toggleButton.addEventListener("click", () => {
-  // Tambahkan animasi tirai hanya saat beralih ke mode malam
-  if (!body.classList.contains("dark-mode")) {
+  if (body.classList.contains("dark-mode")) {
+    body.classList.add("light-mode-animate");
+    setTimeout(() => {
+      body.classList.remove("light-mode-animate");
+    }, 1000);
+    
+    // Hapus kelas dark-mode untuk kembali ke mode terang
+    body.classList.remove("dark-mode");
+    app.classList.remove("dark-mode");
+    cityInput.classList.remove("dark-mode");
+    searchBtn.classList.remove("dark-mode");
+    document.querySelectorAll(".weather-item").forEach(item => {
+      item.classList.remove("dark-mode");
+    });
+    
+    // Ubah ikon dan teks tombol
+    toggleButton.innerHTML = "🌙 Mode Malam";
+  } else {
     body.classList.add("dark-mode-animate");
     setTimeout(() => {
       body.classList.remove("dark-mode-animate");
     }, 1000);
-  }
-  
-  // Toggle kelas dark-mode di body dan #app
-  body.classList.toggle("dark-mode");
-  app.classList.toggle("dark-mode");
 
-  // Toggle kelas dark-mode pada elemen cuaca
-  document.querySelectorAll(".weather-item").forEach(item => {
-    item.classList.toggle("dark-mode");
-  });
+    // Tambah kelas dark-mode untuk mode malam
+    body.classList.add("dark-mode");
+    app.classList.add("dark-mode");
+    cityInput.classList.add("dark-mode");
+    searchBtn.classList.add("dark-mode");
+    document.querySelectorAll(".weather-item").forEach(item => {
+      item.classList.add("dark-mode");
+    });
+
+    // Ubah ikon dan teks tombol
+    toggleButton.innerHTML = "☀️ Mode Terang";
+  }
 });
