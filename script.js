@@ -41,3 +41,27 @@ function displayWeather(data) {
     <div class="weather-item"><strong>Kecepatan Angin:</strong> ${windSpeed} m/s</div>
   `;
 }
+// Ambil tombol dan elemen body
+const toggleButton = document.getElementById("toggle-mode");
+const body = document.body;
+const app = document.getElementById("app");
+
+// Event listener untuk tombol mode malam
+toggleButton.addEventListener("click", () => {
+  // Tambahkan animasi tirai hanya saat beralih ke mode malam
+  if (!body.classList.contains("dark-mode")) {
+    body.classList.add("dark-mode-animate");
+    setTimeout(() => {
+      body.classList.remove("dark-mode-animate");
+    }, 1000);
+  }
+  
+  // Toggle kelas dark-mode di body dan #app
+  body.classList.toggle("dark-mode");
+  app.classList.toggle("dark-mode");
+
+  // Toggle kelas dark-mode pada elemen cuaca
+  document.querySelectorAll(".weather-item").forEach(item => {
+    item.classList.toggle("dark-mode");
+  });
+});
